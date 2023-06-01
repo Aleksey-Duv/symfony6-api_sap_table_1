@@ -11,10 +11,7 @@ class ZinmmSofLotH
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
-
-    #[ORM\Column(length: 12)]
-    private ?string $konkurs_id = null;
+    private ?int $lot_id = null;
 
     #[ORM\Column(length: 30)]
     private ?string $lot_nr = null;
@@ -22,22 +19,12 @@ class ZinmmSofLotH
     #[ORM\Column(length: 132)]
     private ?string $lot_name = null;
 
-    public function getId(): ?int
+
+    public function getLotId(): ?int
     {
-        return $this->id;
+        return $this->lot_id;
     }
 
-    public function getKonkursId(): ?string
-    {
-        return $this->konkurs_id;
-    }
-
-    public function setKonkursId(string $konkurs_id): self
-    {
-        $this->konkurs_id = $konkurs_id;
-
-        return $this;
-    }
 
     public function getLotNr(): ?string
     {
@@ -62,4 +49,5 @@ class ZinmmSofLotH
 
         return $this;
     }
+
 }
