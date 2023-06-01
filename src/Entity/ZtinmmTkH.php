@@ -21,6 +21,14 @@ class ZtinmmTkH
     #[ORM\Column(length: 255)]
     private ?string $konkurs_name = null;
 
+    #[ORM\OneToMany(mappedBy: 'konkurs_idd', targetEntity: ZinmmSofLotH::class)]
+    private Collection $zinmmSofLotHs;
+
+    public function __construct()
+    {
+        $this->zinmmSofLotHs = new ArrayCollection();
+    }
+
     public function getKonkursId(): ?int
     {
         return $this->konkurs_id;
@@ -46,6 +54,36 @@ class ZtinmmTkH
     public function setKonkursName(string $konkurs_name): self
     {
         $this->konkurs_name = $konkurs_name;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ZinmmSofLotH>
+     */
+    public function getZinmmSofLotHs(): Collection
+    {
+        return $this->zinmmSofLotHs;
+    }
+
+    public function addZinmmSofLotH(ZinmmSofLotH $zinmmSofLotH): self
+    {
+        if (!$this->zinmmSofLotHs->contains($zinmmSofLotH)) {
+            $this->zinmmSofLotHs->add($zinmmSofLotH);
+            $zinmmSofLotH->setKonkursIdd($this);
+        }
+
+        return $this;
+    }
+
+    public function removeZinmmSofLotH(ZinmmSofLotH $zinmmSofLotH): self
+    {
+        if ($this->zinmmSofLotHs->removeElement($zinmmSofLotH)) {
+            // set the owning side to null (unless already changed)
+            if ($zinmmSofLotH->getKonkursIdd() === $this) {
+                $zinmmSofLotH->setKonkursIdd(null);
+            }
+        }
 
         return $this;
     }

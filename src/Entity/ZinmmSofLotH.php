@@ -19,6 +19,10 @@ class ZinmmSofLotH
     #[ORM\Column(length: 132)]
     private ?string $lot_name = null;
 
+    #[ORM\ManyToOne(inversedBy: 'zinmmSofLotHs')]
+    #[ORM\JoinColumn(name: 'konkurs_id',referencedColumnName: 'konkurs_id', nullable: false )]
+    private ?ZtinmmTkH $konkurs_idd = null;
+
     public function getLotId(): ?int
     {
         return $this->lot_id;
@@ -44,6 +48,18 @@ class ZinmmSofLotH
     public function setLotName(string $lot_name): self
     {
         $this->lot_name = $lot_name;
+
+        return $this;
+    }
+
+    public function getKonkursIdd(): ?ZtinmmTkH
+    {
+        return $this->konkurs_idd;
+    }
+
+    public function setKonkursIdd(?ZtinmmTkH $konkurs_idd): self
+    {
+        $this->konkurs_idd = $konkurs_idd;
 
         return $this;
     }
