@@ -21,7 +21,6 @@ class ZtinmmTkH
     #[ORM\Column(length: 255)]
     private ?string $konkurs_name = null;
 
-
     public function getKonkursId(): ?int
     {
         return $this->konkurs_id;
@@ -50,7 +49,5 @@ class ZtinmmTkH
 
         return $this;
     }
-
-
 
 }

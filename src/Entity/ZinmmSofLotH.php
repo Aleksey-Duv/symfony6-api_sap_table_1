@@ -19,12 +19,10 @@ class ZinmmSofLotH
     #[ORM\Column(length: 132)]
     private ?string $lot_name = null;
 
-
     public function getLotId(): ?int
     {
         return $this->lot_id;
     }
-
 
     public function getLotNr(): ?string
     {
@@ -49,5 +47,6 @@ class ZinmmSofLotH
 
         return $this;
     }
+
 
 }
