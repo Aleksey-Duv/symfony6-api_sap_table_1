@@ -4,9 +4,10 @@ namespace App\Servise;
 
 use App\Entity\ZtinmmTkH;
 use App\Model\ZtinmmTkHListItem;
+use App\Model\ZtinmmTkHListItem as TkHModel;
 use App\Model\ZtinmmTkHListResponse;
 use App\Repository\ZtinmmTkHRepository;
-use Doctrine\Common\Collections\Criteria;
+
 
 class ZtinmmTkHServise
 {
@@ -17,10 +18,11 @@ class ZtinmmTkHServise
     public function getZtinmmTkH(): ZtinmmTkHListResponse
     {
 
-      $proc =   $this->tkHRepository->findAllSortedByKonkurs();
+      $proc = $this->tkHRepository->findAllSortedByKonkurs();
+
 
       $item = array_map(
-          fn(ZtinmmTkH $tkh) => new ZtinmmTkHListItem(
+          fn(ZtinmmTkH $tkh) => new TkHModel(
               $tkh->getKonkursId(), $tkh->getKonkursNr(), $tkh->getKonkursName()
           ),
           $proc
