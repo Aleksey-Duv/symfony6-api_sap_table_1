@@ -24,6 +24,9 @@ class ZtinmmTkH
     #[ORM\OneToMany(mappedBy: 'konkurs_idd', targetEntity: ZinmmSofLotH::class)]
     private Collection $zinmmSofLotHs;
 
+    #[ORM\ManyToOne(inversedBy: 'ztinmmTkHsid')]
+    private ?t001 $BukrsID = null;
+
     public function __construct()
     {
         $this->zinmmSofLotHs = new ArrayCollection();
@@ -84,6 +87,18 @@ class ZtinmmTkH
                 $zinmmSofLotH->setKonkursIdd(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBukrsID(): ?t001
+    {
+        return $this->BukrsID;
+    }
+
+    public function setBukrsID(?t001 $BukrsID): self
+    {
+        $this->BukrsID = $BukrsID;
 
         return $this;
     }
