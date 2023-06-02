@@ -1,62 +1,31 @@
 <?php
-
+declare(strict_types=1);
 namespace App\Model;
 
 class ZtinmmTkHListItem
 {
-    private $id;
 
-    private ?string $konkurs_nr ;
-
-    private ?string $konkurs_name;
-
-    private ?string $Bukrs ;
-
-    /**
-     * @param $id
-     * @param string|null $konkurs_nr
-     * @param string|null $konkurs_name
-     * @param string|null $Bukrs
-     */
-    public function __construct($id, ?string $konkurs_nr, ?string $konkurs_name, ?string $Bukrs)
+    public function __construct(private readonly int $konkurs_id, private readonly ?string $konkurs_nr, private readonly ?string $konkurs_name)
     {
-        $this->id = $id;
-        $this->konkurs_nr = $konkurs_nr;
-        $this->konkurs_name = $konkurs_name;
-        $this->Bukrs = $Bukrs;
     }
 
-    /**
-     * @return mixed
-     */
-    public function getId()
+    public function getkonkurs_id(): int
     {
-        return $this->id;
+        return $this->konkurs_id;
     }
 
-    /**
-     * @return string|null
-     */
+
     public function getKonkursNr(): ?string
     {
         return $this->konkurs_nr;
     }
 
-    /**
-     * @return string|null
-     */
+
     public function getKonkursName(): ?string
     {
         return $this->konkurs_name;
     }
 
-    /**
-     * @return string|null
-     */
-    public function getBukrs(): ?string
-    {
-        return $this->Bukrs;
-    }
 
 
 }

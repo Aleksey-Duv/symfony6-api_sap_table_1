@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\ZtinmmTkH;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Common\Collections\Criteria;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -39,28 +40,12 @@ class ZtinmmTkHRepository extends ServiceEntityRepository
         }
     }
 
-//    /**
-//     * @return ZtinmmTkH[] Returns an array of ZtinmmTkH objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('z')
-//            ->andWhere('z.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('z.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    /**
+     * @return ZtinmmTkH[]
+     */
+    public function findAllSortedByKonkurs(): array
+    {
+        return $this->findBy([], ['konkurs_nr' => Criteria::ASC]);
+    }
 
-//    public function findOneBySomeField($value): ?ZtinmmTkH
-//    {
-//        return $this->createQueryBuilder('z')
-//            ->andWhere('z.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
 }
