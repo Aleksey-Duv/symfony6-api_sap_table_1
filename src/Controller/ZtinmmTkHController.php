@@ -20,10 +20,12 @@ class ZtinmmTkHController extends AbstractController
     public function index(srvtest $srvtest, ZtinmmTkHRepository $tkHRepository): JsonResponse
     {
 
+
+
         $proc = $tkHRepository->findAllSortedByKonkurs();
 //dd($proc);
-        return $srvtest->gettdat();
-        //  return $this->json( $this->tkhServise->getZtinmmTkH());
+        //return $srvtest->gettdat();
+          return $this->json( $this->tkhServise->getZtinmmTkH());
 
     }
 }
